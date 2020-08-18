@@ -1,0 +1,1 @@
+Main-Class: stolbovoy.photo_copy.Main
