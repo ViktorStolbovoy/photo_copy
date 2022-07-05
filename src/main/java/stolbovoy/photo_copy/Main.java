@@ -26,11 +26,16 @@ public class Main
     public static void main(String[] args) {
         System.out.println("Photo  copy");
 
+        try {
+            JCommander.newBuilder()
+                .addObject(params)
+                .build()
+                .parse(args);
+        } catch (ParameterException ex) {
+            ex.usage();
+            return;
+        }
 
-        JCommander.newBuilder()
-            .addObject(params)
-            .build()
-            .parse(args);
         parseDirectory();
     }
 
@@ -123,6 +128,8 @@ public class Main
     {
 
         if (getFileSize(file1) != getFileSize(file2)) return false;
+
+        if (!params.getSlowMode()) return true;
 
         byte[] buf1 = new byte[10240];
         byte[] buf2 = new byte[10240];

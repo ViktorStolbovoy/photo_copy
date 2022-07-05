@@ -60,6 +60,9 @@ public class Params
     @Parameter(names = {"-v"}, description = "Output path for video (e.g. C:\\\\photo\\{YYYY-MM-DD}\\RAW) default is -o + \\VIDEO")
     private String outputPathVideo;
 
+    @Parameter(names = {"-s"}, description = "Slow mode: compare file content")
+    private boolean slowMode;
+
     //// Path handling
     private PathFormatter pathFormatterJpeg;
     private PathFormatter pathFormatterRaw;
@@ -111,5 +114,9 @@ public class Params
             default:
                 return null;
         }
+    }
+
+    public boolean getSlowMode() {
+        return slowMode;
     }
 }
